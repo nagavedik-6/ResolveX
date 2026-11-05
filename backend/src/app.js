@@ -15,7 +15,13 @@ const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
 app.disable("x-powered-by");
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      imgSrc: ["'self'", "data:", "https://*.tile.openstreetmap.org"]
+    }
+  }
+}));
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN ? process.env.CLIENT_ORIGIN.split(",").map((origin) => origin.trim()) : false
 }));
