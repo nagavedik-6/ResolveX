@@ -61,6 +61,10 @@ The root `render.yaml` configures one free web service that builds the frontend 
 
 The free Render service may sleep when idle. Store connection strings and other secrets in Render's environment settings, not in source files.
 
+## Deploy the frontend on GitHub Pages
+
+The `Deploy frontend to GitHub Pages` workflow publishes the React frontend at `https://nagavedik-6.github.io/ResolveX/` whenever changes are pushed to `main`. It builds the frontend only; GitHub Pages cannot run the Express API or MongoDB. Features that require an API (accounts, reports, comments, and staff/admin tools) will not work there. Use the Render deployment above for the full-stack application.
+
 Public registration creates community accounts only. An administrator can promote community accounts to officers in **Community members** and assign them to departments. Provision the first administrator through MongoDB Compass by opening the `users` collection, finding the trusted account by email, and changing its `role` to `admin`. Administrator privileges are intentionally unavailable from public registration and the admin UI.
 
 ## Main paths
